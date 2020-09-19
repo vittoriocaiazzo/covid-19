@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/covid-19/static/css/main.c95f8d60.chunk.css",
+    "main.js": "/covid-19/static/js/main.694d5f62.chunk.js",
+    "main.js.map": "/covid-19/static/js/main.694d5f62.chunk.js.map",
+    "runtime-main.js": "/covid-19/static/js/runtime-main.8e18646f.js",
+    "runtime-main.js.map": "/covid-19/static/js/runtime-main.8e18646f.js.map",
+    "static/js/2.afbaaafa.chunk.js": "/covid-19/static/js/2.afbaaafa.chunk.js",
+    "static/js/2.afbaaafa.chunk.js.map": "/covid-19/static/js/2.afbaaafa.chunk.js.map",
+    "index.html": "/covid-19/index.html",
+    "precache-manifest.3a02253ec07bc5237324b7cdabf61f6f.js": "/covid-19/precache-manifest.3a02253ec07bc5237324b7cdabf61f6f.js",
+    "service-worker.js": "/covid-19/service-worker.js",
+    "static/css/main.c95f8d60.chunk.css.map": "/covid-19/static/css/main.c95f8d60.chunk.css.map",
+    "static/js/2.afbaaafa.chunk.js.LICENSE.txt": "/covid-19/static/js/2.afbaaafa.chunk.js.LICENSE.txt",
+    "static/media/cancel-circle.2446d46c.svg": "/covid-19/static/media/cancel-circle.2446d46c.svg",
+    "static/media/github.1fc7ff0b.svg": "/covid-19/static/media/github.1fc7ff0b.svg",
+    "static/media/hamburger.86595150.svg": "/covid-19/static/media/hamburger.86595150.svg",
+    "static/media/linkedin.f80a0f24.svg": "/covid-19/static/media/linkedin.f80a0f24.svg",
+    "static/media/search.bf3113cd.svg": "/covid-19/static/media/search.bf3113cd.svg",
+    "static/media/sort-amount-asc.195eca3b.svg": "/covid-19/static/media/sort-amount-asc.195eca3b.svg",
+    "static/media/sort-amount-desc.b2bc0afc.svg": "/covid-19/static/media/sort-amount-desc.b2bc0afc.svg",
+    "static/media/stats-bars.c88c47fb.svg": "/covid-19/static/media/stats-bars.c88c47fb.svg",
+    "static/media/stats-dots.3b070670.svg": "/covid-19/static/media/stats-dots.3b070670.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8e18646f.js",
+    "static/js/2.afbaaafa.chunk.js",
+    "static/css/main.c95f8d60.chunk.css",
+    "static/js/main.694d5f62.chunk.js"
+  ]
+}
