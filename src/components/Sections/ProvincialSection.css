@@ -1,0 +1,54 @@
+.provincial-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.provincial-sections {
+  flex: 1;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  margin-bottom: 4rem;
+
+  overflow: scroll;
+}
+
+.provincial-sections__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.provincial-sections__section:not(:last-child) {
+  margin-bottom: 4rem;
+}
+
+.region-name {
+  margin: 1rem 2rem;
+  font-size: 1.8rem;
+  color: rgb(230, 149, 0);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.provinces {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.province {
+  margin: 1rem 2rem;
+  font-size: 1.6rem;
+  color: rgb(192, 192, 192);
+}
+
+.highlighted {
+  color: black;
+  font-weight: 400;
+}

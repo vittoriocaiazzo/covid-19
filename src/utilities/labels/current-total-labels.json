@@ -1,0 +1,20 @@
+{
+  "data": "data",
+  "stato": "stato",
+  "regione": "regione",
+  "ricoverati_con_sintomi": "attuali ricoverati con sintomi",
+  "terapia_intensiva": "attuali in terapia intensiva",
+  "totale_ospedalizzati": "attuali ospedalizzati",
+  "isolamento_domiciliare": "attuali in isolamento domiciliare",
+  "totale_positivi": "attuali positivi",
+  "variazione_totale_positivi": "variazione totale positivi",
+  "nuovi_positivi": "nuovi positivi",
+  "dimessi_guariti": "totale guariti",
+  "deceduti": "totale deceduti",
+  "casi_da_sospetto_diagnostico": "casi da sospetto diagnostico",
+  "casi_da_screening": "casi da screening",
+  "totale_casi": "totale casi",
+  "tamponi": "totale tamponi",
+  "casi_testati": "casi testati",
+  "note": "note"
+}

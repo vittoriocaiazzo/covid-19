@@ -1,0 +1,19 @@
+.select-container {
+  align-self: flex-end;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.select {
+  width: 25rem;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 676px) {
+  .select-container {
+    margin-top: 1rem;
+  }
+}

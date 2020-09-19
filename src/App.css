@@ -1,38 +1,23 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.main-container {
   min-height: 100vh;
+  width: 100vw;
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+  /* border: 3px solid red; */
 }
 
-.App-link {
-  color: #61dafb;
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 676px) {
+  .main-container {
+    /* flex-direction: column; */
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* iphone X , XS, 11 Pro */
+/* @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .main-container {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
+} */

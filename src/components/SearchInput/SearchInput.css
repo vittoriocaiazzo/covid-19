@@ -1,0 +1,28 @@
+.search-container {
+  font-size: 1.5rem;
+  margin-bottom: 4rem;
+
+  position: relative;
+  align-self: flex-end;
+}
+
+.search-container__input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(145, 145, 145);
+  padding: 0.2rem 0.2rem;
+  width: 18rem;
+  font-size: 1.6rem;
+  border-radius: 0;
+}
+
+.search-container__search-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  position: absolute;
+  left: calc(100% - 1.5rem - 0.5rem);
+  top: calc(50% - 7.5px);
+
+  fill: rgb(145, 145, 145);
+}

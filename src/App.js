@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-function App() {
+import Layout from "./hoc/Layout";
+
+import { fetchNationalData } from "./store/actions/nationalActions";
+import { fetchRegionalData } from "./store/actions/regionalActions";
+import { fetchProvincialData } from "./store/actions/provincialActions";
+
+const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchNationalData());
+    dispatch(fetchRegionalData());
+    dispatch(fetchProvincialData());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-container">
+      <BrowserRouter>
+        <Layout />
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;

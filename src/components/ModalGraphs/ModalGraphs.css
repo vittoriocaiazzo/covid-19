@@ -1,0 +1,54 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
+  z-index: 100;
+  cursor: pointer;
+
+  background-color: rgb(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+
+  animation: fade-in 0.5s;
+}
+
+.bar-graph {
+  height: 70vh;
+  width: 96vw;
+  padding: 2rem;
+  z-index: 150;
+  background-color: white;
+
+  position: fixed;
+  top: 15vh;
+  left: 2vw;
+
+  animation: fade-in 0.5s;
+}
+
+.graph-container {
+  height: 100%;
+  width: 100%;
+}
+
+.close-graph {
+  width: 25px;
+  height: 25px;
+
+  position: absolute;
+  top: 0;
+  left: calc(100% - 25px - 1rem);
+  margin-top: 1rem;
+
+  cursor: pointer;
+  fill: black;
+}
+
+@media only screen and (max-height: 600px) {
+  .bar-graph {
+    height: 94vh;
+    top: 3vh;
+  }
+}
