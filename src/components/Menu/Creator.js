@@ -7,7 +7,7 @@ const Creator = () => {
   return (
     <div className="creator">
       <a
-        href="https://github.com/VittoVitto88"
+        href="https://github.com/VittoVitto88/covid-19"
         target="_blank"
         rel="noopener noreferrer"
       >

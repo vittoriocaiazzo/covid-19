@@ -3,7 +3,8 @@ export const dateFormat = (date, withTime) => {
     month = "" + (d.getMonth() + 1),
     day = "" + d.getDate(),
     year = d.getFullYear(),
-    time = d.getUTCHours() + ":" + d.getUTCMinutes() + "0";
+    time = d.toLocaleTimeString();
+  // time = d.getUTCHours() + ":" + d.getUTCMinutes() + "0";
 
   if (month.length < 2) month = `0${month}`;
   if (day.length < 2) day = `0${day}`;

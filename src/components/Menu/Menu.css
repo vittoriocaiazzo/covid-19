@@ -154,7 +154,12 @@
   }
 
   .creator {
-    display: none;
+    width: auto;
+    margin-left: 2rem;
+  }
+
+  .creator__icon {
+    margin: 0 1rem;
   }
 }
 
