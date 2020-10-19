@@ -1,7 +1,7 @@
 import React from "react";
 
-import { ReactComponent as Github } from "../../icons/github.svg";
-import { ReactComponent as Linkedin } from "../../icons/linkedin.svg";
+import { ReactComponent as Github } from "../../styles/icons/github.svg";
+import { ReactComponent as Linkedin } from "../../styles/icons/linkedin.svg";
 
 const Creator = () => {
   return (

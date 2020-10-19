@@ -1,28 +1,30 @@
 import React from "react";
-import "../Containers.css";
-
-import SelectInput from "../../components/SelectInput/SelectInput";
-import ProvinceCards from "../../components/Cards/ProvinceCards/ProvinceCards";
-
 import { useSelector, useDispatch } from "react-redux";
 
+import "../Containers.css";
+import labels from "../../styles/total-labels.json";
 import {
   getProvinceList,
-  getHistoricalProvincialData,
+  selectSortedHistoricalProvincialData,
 } from "../../store/selectors/provincialSelector";
 import { setHistoricalProvincialFilter } from "../../store/actions/provincialActions";
+import { setProvincialSorting } from "../../store/actions/provincialActions";
 
-const HistoricalProvincialCards = (props) => {
-  const historicalProvincialData = useSelector((state) =>
-    getHistoricalProvincialData(state, props)
-  );
+import SelectInput from "../../components/SelectInput/SelectInput";
+import DateTable from "../../components/Tables/DateTable";
 
-  return <ProvinceCards data={historicalProvincialData} />;
+const getColumns = (data) => {
+  if (data.length === 0) return [];
+  return Object.keys(data[0]).filter((key) => key !== "dataISO");
 };
 
 const HistoricalProvincialData = () => {
   const provincialState = useSelector((state) => state.provincialData);
+  const historicalProvincialData = useSelector(
+    selectSortedHistoricalProvincialData
+  );
   const provinces = useSelector(getProvinceList);
+
   const dispatch = useDispatch();
 
   const options = provinces.map((province) => {
@@ -33,30 +35,30 @@ const HistoricalProvincialData = () => {
     dispatch(setHistoricalProvincialFilter(selectedOption.value));
   };
 
+  const sortingClickHandler = (value) => {
+    if (provincialState.sorting.historical.by === "ASC")
+      dispatch(setProvincialSorting({ historical: { by: "DESC", value } }));
+    else if (provincialState.sorting.historical.by === "DESC")
+      dispatch(setProvincialSorting({ historical: { by: "ASC", value } }));
+  };
+
   return (
-    <div className="data-container data-container--fixed-height">
-      {provincialState.isLoading && <div>LOADING</div>}
-
-      {provincialState.isLoaded && (
-        <>
-          <h2 className="data-container__title">I DATI PROVINCIALI</h2>
-          <SelectInput
-            options={options}
-            defaultValue={options.find(
-              (option) => option.value === provincialState.historicalFilter
-            )}
-            onChange={selectProvince}
-          />
-          <HistoricalProvincialCards
-            filter={"SHOW_HISTORICAL_PROVINCIAL_DATA"}
-          />
-
-          <div className="data-container__note-update-container">
-            <div></div>
-            <div>{provincialState.updateTime}</div>
-          </div>
-        </>
-      )}
+    <div className="table-card table-fullwidth-column">
+      <SelectInput
+        options={options}
+        defaultValue={options.find(
+          (option) => option.value === provincialState.historicalFilter
+        )}
+        onChange={selectProvince}
+      />
+      <DateTable
+        data={historicalProvincialData}
+        columns={getColumns(historicalProvincialData)}
+        sortingBy={provincialState.sorting.historical.by}
+        sortingValue={provincialState.sorting.historical.value}
+        onClick={sortingClickHandler}
+        labels={labels}
+      />
     </div>
   );
 };

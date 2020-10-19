@@ -1,0 +1,61 @@
+.modal-province-backdrop {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 2999;
+
+  background-color: black;
+  opacity: 0.8;
+}
+
+.modal-province-card {
+  width: fit-content;
+  height: fit-content;
+  max-height: 80%;
+  overflow: auto;
+
+  background-color: rgb(245, 245, 255);
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px rgb(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 3000;
+
+  animation: pop-in 0.5s;
+}
+
+.close-button {
+  position: absolute;
+  height: 1.75rem;
+  top: 0;
+  left: calc(100% - 4rem);
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.modal-province-card__region {
+  text-transform: uppercase;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.modal-province-card__province {
+  font-size: 1.5rem;
+}
+
+.modal-province-card__province:not(:last-child) {
+  margin-bottom: 1rem;
+}

@@ -10,7 +10,8 @@ const MenuItem = (props) => {
         className="menu__link"
         onClick={props.onClick}
       >
-        {props.children}
+        <img className="menu__icon" alt="" src={props.icon} />
+        <span className="menu__span">{props.children}</span>
       </NavLink>
     </li>
   );

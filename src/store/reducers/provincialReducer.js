@@ -4,8 +4,15 @@ const initialState = {
   isLoading: false,
   isLoaded: false,
   data: [],
-  filter: "",
+  searchFilter: "",
+  regionFilter: "",
   historicalFilter: "Agrigento",
+  sorting: {
+    summary: { by: "DESC", value: "nuovi_positivi" },
+    historical: { by: "DESC", value: "data" },
+    today: { by: "DESC", value: "nuovi_positivi" },
+    current: { by: "DESC", value: "totale_casi" },
+  },
 };
 
 const provincialReducer = (state = initialState, action) => {
@@ -28,11 +35,30 @@ const provincialReducer = (state = initialState, action) => {
     case actionTypes.GET_PROVINCIAL_DATA_FAILED:
       return { error: action.error };
 
+    case actionTypes.SET_PROVINCIAL_SORTING:
+      return {
+        ...state,
+        sorting: {
+          ...state.sorting,
+          summary: { by: "DESC", value: "nuovi_positivi" },
+          historical: { by: "DESC", value: "data" },
+          today: { by: "DESC", value: "nuovi_positivi" },
+          current: { by: "DESC", value: "totale_casi" },
+          [action.sortingKey]: {
+            by: action.sorting[action.sortingKey].by,
+            value: action.sorting[action.sortingKey].value,
+          },
+        },
+      };
+
     case actionTypes.SET_PROVINCIAL_FILTER:
-      return { ...state, filter: action.province };
+      return { ...state, searchFilter: action.province };
 
     case actionTypes.SET_HISTORICAL_PROVINCIAL_FILTER:
       return { ...state, historicalFilter: action.province };
+
+    case actionTypes.SET_PROVINCIAL_FILTER_REGION:
+      return { ...state, regionFilter: action.region };
 
     default:
       return state;

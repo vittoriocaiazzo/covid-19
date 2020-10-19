@@ -1,8 +1,8 @@
 :root {
   --color-primary: rgb(60, 60, 60);
 
-  --color-menu: rgb(235, 235, 235);
-  --backgroundcolor-menu: rgb(45, 45, 45);
+  --color-menu: rgb(240, 240, 255);
+  --backgroundcolor-menu: rgb(30, 30, 30);
 }
 
 * {
@@ -22,23 +22,14 @@ html {
 }
 
 body {
-  /* font-family: "Poppins", sans-serif; */
-  /* font-family: "Lato", sans-serif; */
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-  background-image: linear-gradient(
-    to right top,
-    #d6d6d6,
-    #dadada,
-    #dedede,
-    #e3e3e3,
-    #e7e7e7
-  );
+  background-color: rgb(240, 240, 255);
 
   min-height: 100vh;
 }
@@ -48,6 +39,12 @@ body {
 /* iPad Pro 11″ */
 @media only screen and (min-device-width: 834px) and (max-device-width: 1194px) and (-webkit-min-device-pixel-ratio: 2) {
   html {
-    font-size: 60%;
+    font-size: 55%;
+  }
+}
+
+@media only screen and (max-width: 676px) {
+  html {
+    font-size: 55%;
   }
 }

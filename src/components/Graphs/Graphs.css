@@ -1,0 +1,119 @@
+.graphs {
+  flex: 100%;
+  height: fit-content;
+
+  margin: 2rem;
+  /* padding: 1rem 0 0 0; */
+  background-color: rgb(245, 245, 255);
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px rgb(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+
+  animation: pop-in 0.5s ease-in-out;
+}
+
+.graphs__inputs {
+  flex: content;
+  height: 5rem;
+
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  overflow: scroll;
+
+  margin: 0 4rem 1rem 4rem;
+}
+
+.graphs__input {
+  margin-right: 0.5rem;
+}
+
+.graphs__label {
+  margin-right: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  white-space: nowrap;
+
+  display: flex;
+  align-items: center;
+}
+
+.graph {
+  flex: 100%;
+  height: 50vh;
+}
+
+.chart {
+  margin-left: -1rem;
+}
+
+.custom-tooltip {
+  padding: 1.5rem;
+  background-color: rgb(245, 245, 255);
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px rgb(0, 0, 0, 0.2);
+}
+
+.tooltip-label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: grey;
+  margin-bottom: 1rem;
+}
+
+.tooltip-content {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 1014px) {
+  .graphs {
+    height: 35vh;
+  }
+  .graph {
+    height: 85%;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 676px) {
+  .graphs {
+    height: 30vh;
+  }
+
+  .graphs__inputs {
+    height: 3rem;
+    margin-top: 0.5rem;
+  }
+
+  .graph {
+    height: 78%;
+    width: 100%;
+  }
+
+  .chart {
+    /* margin-left: -3rem; */
+    /* margin-left: 1rem; */
+    margin: 0;
+  }
+}
+
+@media only screen and (max-height: 416px) {
+  .graphs {
+    height: 80vh;
+  }
+  .graph {
+    height: 80%;
+    width: 100%;
+  }
+}
+
+/* iPad Pro 11″ */
+@media only screen and (min-device-width: 834px) and (max-device-width: 1194px) and (-webkit-min-device-pixel-ratio: 2) {
+  .graphs__input {
+    transform: scale(0.8);
+  }
+}

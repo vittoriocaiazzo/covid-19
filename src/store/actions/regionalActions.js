@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
-import { dateFormat } from "../../utilities/utilities";
+import { dateFormat } from "../../helpers/utilities";
 
 const regionalDataURL =
   "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni.json";
@@ -58,10 +58,4 @@ export const setRegionalFilter = (regionFilter) => {
     type: actionTypes.SET_REGIONAL_FILTER,
     regionFilter,
   };
-};
-
-export const filters = {
-  SHOW_TODAYS_REGIONAL_DATA: "SHOW_TODAYS_REGIONAL_DATA",
-  SHOW_CURRENT_REGIONAL_DATA: "SHOW_CURRENT_REGIONAL_DATA",
-  SHOW_HISTORICAL_REGIONAL_DATA: "SHOW_HISTORICAL_REGIONAL_DATA",
 };

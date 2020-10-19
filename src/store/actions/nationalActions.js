@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
-import { dateFormat } from "../../utilities/utilities";
+import { dateFormat } from "../../helpers/utilities";
 
 const nationalDataURL =
   "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json";
@@ -54,15 +54,17 @@ export const setNationalSorting = (sorting) => {
   };
 };
 
-export const setRegionalFilter = (region) => {
-  return {
-    type: actionTypes.SET_REGIONAL_FILTER,
-    region,
-  };
-};
+// export const setRegionalFilter = (region) => {
+//   return {
+//     type: actionTypes.SET_REGIONAL_FILTER,
+//     region,
+//   };
+// };
 
-export const filters = {
-  SHOW_TODAYS_NATIONAL_DATA: "SHOW_TODAYS_NATIONAL_DATA",
-  SHOW_CURRENT_NATIONAL_DATA: "SHOW_CURRENT_NATIONAL_DATA",
-  SHOW_HISTORICAL_NATIONAL_DATA: "SHOW_HISTORICAL_NATIONAL_DATA",
+export const setGraphInput = (graphInput) => {
+  return {
+    type: actionTypes.SET_GRAPH_INPUT,
+    input: Object.keys(graphInput)[0],
+    graphInput,
+  };
 };

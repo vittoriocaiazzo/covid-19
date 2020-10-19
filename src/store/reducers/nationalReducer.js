@@ -7,6 +7,11 @@ const initialState = {
   sorting: {
     historical: { by: "DESC", value: "data" },
   },
+  graphInputs: {
+    summary: { input: "nuovi_positivi", type: "Bar" },
+    today: { input: "nuovi_positivi", type: "Bar" },
+    current: { input: "totale_casi", type: "Area" },
+  },
 };
 
 const nationalReducer = (state = initialState, action) => {
@@ -38,6 +43,20 @@ const nationalReducer = (state = initialState, action) => {
           [action.sortingKey]: {
             by: action.sorting[action.sortingKey].by,
             value: action.sorting[action.sortingKey].value,
+          },
+        },
+      };
+
+    case actionTypes.SET_GRAPH_INPUT:
+      return {
+        ...state,
+        graphInputs: {
+          summary: { ...state.graphInputs.summary },
+          today: { ...state.graphInputs.today },
+          current: { ...state.graphInputs.current },
+          [action.input]: {
+            input: action.graphInput[action.input].input,
+            type: action.graphInput[action.input].type,
           },
         },
       };

@@ -5,6 +5,7 @@ const initialState = {
   isLoaded: false,
   data: [],
   sorting: {
+    summary: { by: "DESC", value: "nuovi_positivi" },
     today: { by: "DESC", value: "nuovi_positivi" },
     current: { by: "DESC", value: "totale_casi" },
     historical: { by: "DESC", value: "data" },
@@ -37,6 +38,7 @@ const regionalReducer = (state = initialState, action) => {
         ...state,
         sorting: {
           ...state.sorting,
+          summary: { by: "DESC", value: "nuovi_positivi" },
           today: { ...state.sorting.today },
           current: { ...state.sorting.current },
           historical: { ...state.sorting.historical },

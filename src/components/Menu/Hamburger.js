@@ -1,7 +1,7 @@
 import React from "react";
 import "./Menu.css";
 
-import { ReactComponent as HamburgerIcon } from "../../icons/hamburger.svg";
+import { ReactComponent as HamburgerIcon } from "../../styles/icons/hamburger.svg";
 
 const Hamburger = (props) => {
   return (

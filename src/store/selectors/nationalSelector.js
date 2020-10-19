@@ -1,42 +1,37 @@
 import { createSelector } from "reselect";
 
-import * as data from "../../utilities/data-format/nationalData";
-import { filters } from "../actions/nationalActions";
+import * as dataHelper from "../../helpers/data-helpers/nationalData";
 
-export const getFilteredNationalData = createSelector(
-  (state) => state.nationalData.data,
-  (_, props) => props.filter,
-  (nationalData, filter) => {
-    switch (filter) {
-      case filters.SHOW_TODAYS_NATIONAL_DATA:
-        return data.buildTodaysNationalData(nationalData);
+// data selector
+const getData = (state) => state.nationalData.data;
 
-      case filters.SHOW_CURRENT_NATIONAL_DATA:
-        return data.buildCurrentNationalData(nationalData);
-
-      case filters.SHOW_HISTORICAL_NATIONAL_DATA:
-        return data.buildHistoricalNationalData(nationalData);
-
-      default:
-        return [];
-    }
-  }
+// select today data
+export const selectTodaysNationalData = createSelector(getData, (data) =>
+  dataHelper.buildTodaysNationalData(data)
 );
 
-const getSorting = (state) => state.nationalData.sorting;
-export const getFilteredAndSortedNationalData = createSelector(
-  (state, props) => getFilteredNationalData(state, props),
-  getSorting,
-  (_, props) => props.sortingKey,
-  (filteredNationalData, sorting, sortingKey) => {
-    switch (sorting[sortingKey].by) {
+// select current data
+export const selectCurrentNationalData = createSelector(getData, (data) =>
+  dataHelper.buildCurrentNationalData(data)
+);
+
+// select and sort historical data
+const selectHistoricalNationalData = createSelector(getData, (data) =>
+  dataHelper.buildHistoricalNationalData(data)
+);
+
+export const selectSortedHistoricalData = createSelector(
+  (state) => state.nationalData.sorting.historical,
+  selectHistoricalNationalData,
+  (sorting, historicalNationalData) => {
+    switch (sorting.by) {
       case "DESC":
-        return filteredNationalData.sort((a, b) =>
-          a[sorting[sortingKey].value] < b[sorting[sortingKey].value] ? 1 : -1
+        return historicalNationalData.sort((a, b) =>
+          a[sorting.value] < b[sorting.value] ? 1 : -1
         );
       case "ASC":
-        return filteredNationalData.sort((a, b) =>
-          a[sorting[sortingKey].value] < b[sorting[sortingKey].value] ? -1 : 1
+        return historicalNationalData.sort((a, b) =>
+          a[sorting.value] < b[sorting.value] ? -1 : 1
         );
       default:
         return [];
@@ -44,26 +39,50 @@ export const getFilteredAndSortedNationalData = createSelector(
   }
 );
 
-export const getGraphData = createSelector(
-  (state) => state.nationalData.data,
-  (_, props) => props.graphDataKey,
-  (_, props) => props.type,
-  (nationalData, graphDataKey, type) => {
-    switch (type) {
-      case "TODAY":
-        return data.buildHistoricalGraphDataForToday(
-          nationalData,
-          graphDataKey
-        );
+// select summary data
+export const selectSummaryNationalData = createSelector(getData, (data) => {
+  return dataHelper.buildSummaryNationalData(data);
+});
 
-      case "CURRENT":
-        return data.buildHistoricalGraphDataForCurrent(
-          nationalData,
-          graphDataKey
+// select graph data for summary
+export const selectSummaryGraphData = createSelector(
+  getData,
+  (state) => state.nationalData.graphInputs.summary,
+  (data, graphInput) => {
+    switch (graphInput.type) {
+      case "Bar":
+        return dataHelper.buildHistoricalGraphDataForToday(
+          data,
+          graphInput.input
         );
-
+      case "Area":
+        return dataHelper.buildHistoricalGraphDataForCurrent(
+          data,
+          graphInput.input
+        );
       default:
         return [];
     }
+  }
+);
+
+// select graph data for today
+export const selectTodaysGraphData = createSelector(
+  getData,
+  (state) => state.nationalData.graphInputs.today,
+  (data, graphInput) => {
+    return dataHelper.buildHistoricalGraphDataForToday(data, graphInput.input);
+  }
+);
+
+// select graph data for current
+export const selectCurrentGraphData = createSelector(
+  getData,
+  (state) => state.nationalData.graphInputs.current,
+  (data, graphInput) => {
+    return dataHelper.buildHistoricalGraphDataForCurrent(
+      data,
+      graphInput.input
+    );
   }
 );

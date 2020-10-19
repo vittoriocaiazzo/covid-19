@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Layout from "./hoc/Layout";
 
@@ -17,10 +18,16 @@ const App = () => {
     dispatch(fetchProvincialData());
   }, [dispatch]);
 
+  const nationalState = useSelector((state) => state.nationalData);
+  const regionalState = useSelector((state) => state.regionalData);
+  const provincialState = useSelector((state) => state.provincialData);
+
   return (
     <div className="main-container">
       <BrowserRouter>
-        <Layout />
+        {nationalState.isLoaded &&
+          regionalState.isLoaded &&
+          provincialState.isLoaded && <Layout />}
       </BrowserRouter>
     </div>
   );

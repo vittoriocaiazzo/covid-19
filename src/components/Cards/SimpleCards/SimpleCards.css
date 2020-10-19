@@ -1,0 +1,133 @@
+.cards-container {
+  flex: 100%;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.cards:not(:last-child) {
+  margin-bottom: 5rem;
+}
+
+.cards:last-child {
+  margin-bottom: 1rem;
+}
+
+.cards__card {
+  /* width: 18rem; */
+  flex: 0 0 25rem;
+  height: 15rem;
+  margin: 1rem;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  color: var(--color-primary);
+  background-color: rgb(245, 245, 255);
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px rgb(0, 0, 0, 0.2);
+
+  animation: pop-in 0.5s;
+}
+
+.cards__card-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-align: center;
+  color: grey;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.cards__card-value {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.simple-color {
+  height: 3.5rem;
+  width: 3.5rem;
+  /* height: 3.5rem;
+  width: 3.5rem; */
+
+  border-radius: 100px;
+  box-shadow: 0px 0px 10px 0px rgb(0, 0, 0, 0.2);
+
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simple-red {
+  background-color: red;
+}
+
+.simple-green {
+  background-color: green;
+}
+
+.simple-orange {
+  background-color: orange;
+}
+
+.simple-purple {
+  background-color: purple;
+}
+
+.simple-blue {
+  background-color: rgb(0, 162, 255);
+}
+
+.simple-icon {
+  height: 70%;
+}
+
+.cards__card-yesterday-value {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: grey;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 1279px) {
+  .cards__card {
+    flex: 0 0 35%;
+    height: 12rem;
+  }
+
+  .cards__card-value {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 1014px) {
+  .cards__card {
+    flex: 0 0 80%;
+    height: 12rem;
+  }
+}
+
+/* iPad Pro 11″ */
+/* @media only screen and (min-device-width: 834px) and (max-device-width: 1194px) and (-webkit-min-device-pixel-ratio: 2) {
+  .cards__card {
+    flex: 0 0 25rem;
+    height: 15rem;
+  }
+
+  .cards__card-value {
+    margin-top: 1rem;
+  }
+} */

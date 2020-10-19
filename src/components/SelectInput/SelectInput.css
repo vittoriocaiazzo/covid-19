@@ -10,6 +10,7 @@
 .select {
   width: 25rem;
   font-size: 1.5rem;
+  margin: 0.5rem 0;
 }
 
 @media only screen and (max-width: 676px) {

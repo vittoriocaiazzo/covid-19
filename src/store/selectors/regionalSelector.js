@@ -1,44 +1,27 @@
 import { createSelector } from "reselect";
 
-import * as data from "../../utilities/data-format/regionalData";
-import { filters } from "../actions/regionalActions";
+import * as dataHelper from "../../helpers/data-helpers/regionalData";
 
-const getRegionalFilter = (state) => state.regionalData.regionFilter;
-const getFilteredRegionalData = createSelector(
-  (state) => state.regionalData.data,
-  getRegionalFilter,
-  (_, props) => props.filter,
-  (regionalData, regionFilter, filter) => {
-    switch (filter) {
-      case filters.SHOW_TODAYS_REGIONAL_DATA:
-        return data.buildTodaysRegionalData(regionalData);
+// data selector
+const getData = (state) => state.regionalData.data;
 
-      case filters.SHOW_CURRENT_REGIONAL_DATA:
-        return data.buildCurrentRegionalData(regionalData);
-
-      case filters.SHOW_HISTORICAL_REGIONAL_DATA:
-        return data.buildHistoricalRegionalData(regionalData, regionFilter);
-
-      default:
-        return [];
-    }
-  }
+// select and sort today data
+const selectTodaysRegionalData = createSelector(getData, (data) =>
+  dataHelper.buildTodaysRegionalData(data)
 );
 
-const getSorting = (state) => state.regionalData.sorting;
-export const getFilteredAndSortedRegionalData = createSelector(
-  (state, props) => getFilteredRegionalData(state, props),
-  getSorting,
-  (_, props) => props.sortingKey,
-  (filteredRegionalData, sorting, sortingKey) => {
-    switch (sorting[sortingKey].by) {
+export const selectSortedTodaysRegionalData = createSelector(
+  (state) => state.regionalData.sorting.today,
+  selectTodaysRegionalData,
+  (sorting, todaysRegionalData) => {
+    switch (sorting.by) {
       case "DESC":
-        return filteredRegionalData.sort((a, b) =>
-          a[sorting[sortingKey].value] > b[sorting[sortingKey].value] ? -1 : 1
+        return todaysRegionalData.sort((a, b) =>
+          a[sorting.value] > b[sorting.value] ? -1 : 1
         );
       case "ASC":
-        return filteredRegionalData.sort((a, b) =>
-          a[sorting[sortingKey].value] > b[sorting[sortingKey].value] ? 1 : -1
+        return todaysRegionalData.sort((a, b) =>
+          a[sorting.value] > b[sorting.value] ? 1 : -1
         );
       default:
         return [];
@@ -46,6 +29,93 @@ export const getFilteredAndSortedRegionalData = createSelector(
   }
 );
 
+// select and sort current data
+const selectCurrentRegionalData = createSelector(getData, (data) =>
+  dataHelper.buildCurrentRegionalData(data)
+);
+
+export const selectSortedCurrentRegionalData = createSelector(
+  (state) => state.regionalData.sorting.current,
+  selectCurrentRegionalData,
+  (sorting, currentRegionalData) => {
+    switch (sorting.by) {
+      case "DESC":
+        return currentRegionalData.sort((a, b) =>
+          a[sorting.value] > b[sorting.value] ? -1 : 1
+        );
+      case "ASC":
+        return currentRegionalData.sort((a, b) =>
+          a[sorting.value] > b[sorting.value] ? 1 : -1
+        );
+      default:
+        return [];
+    }
+  }
+);
+
+// select and sort historical data
+const selectHistoricalRegionalData = createSelector(
+  (state) => state.regionalData.regionFilter,
+  getData,
+  (regionFilter, data) =>
+    dataHelper.buildHistoricalRegionalData(data, regionFilter)
+);
+
+export const selectSortedHistoricalRegionalData = createSelector(
+  (state) => state.regionalData.sorting.historical,
+  selectHistoricalRegionalData,
+  (sorting, historicalRegionalData) => {
+    switch (sorting.by) {
+      case "DESC":
+        return historicalRegionalData.sort((a, b) =>
+          a[sorting.value] > b[sorting.value] ? -1 : 1
+        );
+      case "ASC":
+        return historicalRegionalData.sort((a, b) =>
+          a[sorting.value] > b[sorting.value] ? 1 : -1
+        );
+      default:
+        return [];
+    }
+  }
+);
+
+// select and sort summary data
+const selectSummaryRegionalData = createSelector(
+  selectTodaysRegionalData,
+  (todaysRegionalData) => {
+    return todaysRegionalData.map((el) => {
+      return {
+        regione: el.regione,
+        nuovi_positivi: el.nuovi_positivi,
+        deceduti: el.deceduti,
+        dimessi_guariti: el.dimessi_guariti,
+        variazione_totale_positivi: el.variazione_totale_positivi,
+      };
+    });
+  }
+);
+
+export const selectSortedSummaryRegionalData = createSelector(
+  selectSummaryRegionalData,
+  (state) => state.regionalData.sorting.summary,
+  (summaryRegionalData, sorting) => {
+    switch (sorting.by) {
+      case "DESC":
+        return summaryRegionalData.sort((a, b) =>
+          a[sorting.value] > b[sorting.value] ? -1 : 1
+        );
+      case "ASC":
+        return summaryRegionalData.sort((a, b) =>
+          a[sorting.value] > b[sorting.value] ? 1 : -1
+        );
+      default:
+        return [];
+    }
+  }
+);
+
+// get region list
 export const getRegionList = createSelector(
   (state) => state.regionalData.data,
   (regionalData) => {

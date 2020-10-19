@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
-import { dateFormat } from "../../utilities/utilities";
+import { dateFormat } from "../../helpers/utilities";
 
 const provincialDataURL =
   "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province.json";
@@ -46,10 +46,26 @@ const failed = (error) => {
   };
 };
 
+export const setProvincialSorting = (sorting) => {
+  const sortingKey = Object.keys(sorting)[0];
+  return {
+    type: actionTypes.SET_PROVINCIAL_SORTING,
+    sorting,
+    sortingKey,
+  };
+};
+
 export const setProvincialFilter = (province) => {
   return {
     type: actionTypes.SET_PROVINCIAL_FILTER,
     province,
+  };
+};
+
+export const setProvincialFilterForRegion = (region) => {
+  return {
+    type: actionTypes.SET_PROVINCIAL_FILTER_REGION,
+    region,
   };
 };
 
@@ -58,10 +74,4 @@ export const setHistoricalProvincialFilter = (province) => {
     type: actionTypes.SET_HISTORICAL_PROVINCIAL_FILTER,
     province,
   };
-};
-
-export const filters = {
-  SHOW_TODAYS_PROVINCIAL_DATA: "SHOW_TODAYS_PROVINCIAL_DATA",
-  SHOW_TOTAL_PROVINCIAL_DATA: "SHOW_TOTAL_PROVINCIAL_DATA",
-  SHOW_HISTORICAL_PROVINCIAL_DATA: "SHOW_HISTORICAL_PROVINCIAL_DATA",
 };
