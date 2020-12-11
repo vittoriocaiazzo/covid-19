@@ -48,11 +48,14 @@ const currentData = (data) => {
     {
       tamponi: data.tamponi,
       casi_testati: data.casi_testati,
-      casi_da_sospetto_diagnostico: data.casi_da_sospetto_diagnostico,
-      casi_da_screening: data.casi_da_screening,
+      casi_da_sospetto_diagnostico: data.casi_da_sospetto_diagnostico
+        ? data.casi_da_sospetto_diagnostico
+        : 0,
+      casi_da_screening: data.casi_da_screening ? data.casi_da_screening : 0,
     },
   ];
 };
+
 const historicalData = (data) => {
   return {
     data: data.data,
@@ -96,8 +99,8 @@ export const buildHistoricalNationalData = (data) => {
 
 export const buildHistoricalGraphDataForToday = (data, graphInput) => {
   if (
-    graphInput === "nuovi_positivi" ||
-    graphInput === "variazione_totale_positivi"
+    graphInput === 'nuovi_positivi' ||
+    graphInput === 'variazione_totale_positivi'
   ) {
     const historicalGraphData = data.map((el) => {
       const newEl = { ...el };
@@ -115,7 +118,7 @@ export const buildHistoricalGraphDataForToday = (data, graphInput) => {
         return {
           data: todayEl.data,
           [graphInput]:
-            graphInput === "deceduti" &&
+            graphInput === 'deceduti' &&
             todayEl[graphInput] - yesterdayEl[graphInput] < 0
               ? 0
               : todayEl[graphInput] - yesterdayEl[graphInput],

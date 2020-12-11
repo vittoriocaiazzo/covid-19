@@ -38,8 +38,10 @@ const currentData = (data) => {
 
     tamponi: data.tamponi,
     casi_testati: data.casi_testati,
-    casi_da_sospetto_diagnostico: data.casi_da_sospetto_diagnostico,
-    casi_da_screening: data.casi_da_screening,
+    casi_da_sospetto_diagnostico: data.casi_da_sospetto_diagnostico
+      ? data.casi_da_sospetto_diagnostico
+      : 0,
+    casi_da_screening: data.casi_da_screening ? data.casi_da_screening : 0,
   };
 };
 
