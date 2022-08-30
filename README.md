@@ -6,6 +6,6 @@ Dashboard that shows covid-19 daily, current and historical data for Italy.
 
 Dashboard che mostra i dati giornalieri, attuali e storici per l'Italia.
 
-[Live Demo](https://vittovitto88.github.io/covid-19/)
+[Live Demo](https://vittoriocaiazzo.github.io/covid-19/)
 
 Data source: Presidenza del Consiglio dei Ministri - Dipartimento della Protezione Civile.
